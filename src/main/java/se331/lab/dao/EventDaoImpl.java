@@ -91,23 +91,12 @@ public class EventDaoImpl implements EventDao {
     public List<Event> getEvents(Integer pageSize, Integer page){
         pageSize = pageSize == null ? eventsList.size() : pageSize;
         page = page == null ? 1 :  page;
-        Integer finalPage = (page - 1 ) *  pageSize;
-        List<Event> output = new ArrayList<>();
-        for (int i = finalPage; i < finalPage + pageSize; i++){
-            output.add(eventsList.get(i));
-        }
-        return output;
+        int firstIndex = (page - 1) * pageSize;
+        return eventsList.subList(firstIndex,Math.min(firstIndex + pageSize,eventsList.size()));
     }
 
     @Override
     public Event getEvent(Long id){
-        Event output = null;
-        for (Event event : eventsList){
-            if (event.getId().equals(id)){
-                output = event;
-                break;
-            }
-        }
-        return output;
+        return eventsList.stream().filter(event -> event.getId().equals(id)).findFirst().orElse(null);
     }
 }
