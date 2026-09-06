@@ -1,8 +1,12 @@
 package se331.lab.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 import se331.lab.entity.Event;
 
 import jakarta.annotation.PostConstruct;
@@ -85,7 +89,32 @@ public class EventController {
     }
 
     @GetMapping("/events")
-    public ResponseEntity<?> getEventList(){
-        return ResponseEntity.ok(eventList);
+    public ResponseEntity<?> getEventList(@RequestParam(value = "_limit",
+    required = false)Integer perPage
+            ,@RequestParam(value = "_page",required = false)Integer page){
+        perPage = perPage == null?eventList.size():perPage;
+        page = page == null?1:page;
+        Integer firstIndex = (page - 1) * perPage;
+        List<Event> output = new ArrayList<>();
+        for (int i = firstIndex; i < firstIndex + perPage; i++){
+            output.add(eventList.get(i));
+        }
+        return ResponseEntity.ok(output);
+    }
+
+    @GetMapping("events/{id}")
+    public ResponseEntity<?> getEvent(@PathVariable ("id") Long id){
+        Event output = null;
+        for (Event event : eventList){
+            if (event.getId().equals(id)){
+                output = event;
+                break;
+            }
+        }
+        if (output != null){
+            return ResponseEntity.ok(output);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"this given id is not found");
+        }
     }
 }
