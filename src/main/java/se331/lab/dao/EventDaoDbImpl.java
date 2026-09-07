@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
+@Profile("db")
 public class EventDaoDbImpl implements EventDao {
     final EventRepository eventRepository;
     @Override
