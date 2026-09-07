@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    active:
+      - id
+  datasource:
+    url: jdbc:postgresql://localhost:5432/selabdb
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create
