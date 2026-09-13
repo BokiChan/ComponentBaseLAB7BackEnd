@@ -2,8 +2,9 @@ package se331.lab.entity;
 
 import java.util.List;
 
-public class Organizer {
+public class Participant {
     Long id;
     String name;
-    List<Event> ownEvents;
+    String telNo;
+    List<Event> eventHistories;
 }

@@ -5,17 +5,14 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 import se331.lab.entity.Event;
-import se331.lab.entity.Organizer;
 import se331.lab.repository.EventRepository;
-import se331.lab.repository.OrganizerRepository;
 
 
 @Component
 @RequiredArgsConstructor
 public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     final EventRepository eventRepository;
-    final OrganizerRepository organizerRepository;
-    @Override
+        @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
         eventRepository.save(Event.builder()
                 .category("Academic")
@@ -24,8 +21,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .location("CAMT Building")
                 .date("3rd Sept")
                 .time("3.00-4.00 pm.")
-                .petsAllowed(false)
-                .organizer("CAMT").build());
+                .petsAllowed(false).build());
         eventRepository.save(Event.builder()
                 .category("Academic")
                 .title("Commencement Day")
@@ -33,8 +29,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .location("CAMT Convention hall")
                 .date("21th Jan")
                 .time("8.00am-4.00 pm.")
-                .petsAllowed(false)
-                .organizer("CMU").build());
+                .petsAllowed(false).build());
         eventRepository.save(Event.builder()
                 .category("Cultural")
                 .title("Loy Krathong")
@@ -42,8 +37,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .location("Ping River")
                 .date("21th Nov")
                 .time("8.00-10.00 pm.")
-                .petsAllowed(false)
-                .organizer("Chiang Mai").build());
+                .petsAllowed(false).build());
         eventRepository.save(Event.builder()
                 .category("Cultural")
                 .title("Songkran")
@@ -51,15 +45,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .location("Chiang Mai Moat")
                 .date("13th April")
                 .time("10.00am-6.00 pm.")
-                .petsAllowed(true)
-                .organizer("Chiang Mai Municipality").build());
-        organizerRepository.save(Organizer.builder()
-                .organizationName("CAMT")
-                .address("Chiang Mai University, Chiang Mai")
-                .build());
-        organizerRepository.save(Organizer.builder()
-                .organizationName("Chiang Mai Municipality")
-                .address("Chiang Mai, Thailand")
-                .build());
+                .petsAllowed(true).build());
+
     }
 }
