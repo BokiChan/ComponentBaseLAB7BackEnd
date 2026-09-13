@@ -78,7 +78,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .petsAllowed(true).build());
         event4.setOrganizer(org3);
         org3.getOwnEvents().add(event4);
-        
+
         participantRepository.save(Participant.builder()
                 .name("Alice Somchai")
                 .telNo("0811111111")
