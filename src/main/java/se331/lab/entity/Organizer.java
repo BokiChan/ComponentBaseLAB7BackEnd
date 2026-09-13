@@ -2,8 +2,9 @@ package se331.lab.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -18,5 +19,6 @@ public class Organizer {
     Long id;
     String name;
     @OneToMany(mappedBy = "organizer")
-    List<Event> ownEvents;
+    @Builder.Default
+    List<Event> ownEvents = new ArrayList<>();
 }

@@ -1,15 +1,13 @@
 package se331.lab.entity;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
 
 @Data
 @Builder
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 public class Participant {
