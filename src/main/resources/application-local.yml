@@ -1,0 +1,8 @@
+supabase:
+  storage:
+    endpoint: https://rhhhkhdwymkyxcqxivsz.storage.supabase.co/storage/v1/s3
+    endpoint_output: https://rhhhkhdwymkyxcqxivsz.supabase.co/storage/v1/object/public/TestBucket/
+    bucket: TestBucket
+    region: ap-northeast-1
+    accessKey: 7ade97d0fcfc1f0cd21abcc325a75500
+    secretKey: de2d0f2d0eeff9725724b56954a82e99f043162cb1ee116a54b30365cfacdb57
