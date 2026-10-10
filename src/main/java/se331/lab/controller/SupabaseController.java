@@ -24,7 +24,7 @@ public class SupabaseController {
     }
 
     @GetMapping("/presignedUrl")
-    public ResponseEntity<String> getPresignedUrl(@RequestParam("fileName") String fileName) {
+    public ResponseEntity<String> getPresignedUrl(@RequestParam("key") String fileName) {
         try {
             String presignedUrl = supabaseStorageService.getPresignedUrl(fileName);
             return ResponseEntity.ok(presignedUrl);
