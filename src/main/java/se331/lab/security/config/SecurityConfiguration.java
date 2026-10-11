@@ -3,6 +3,7 @@ package se331.lab.security.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -25,7 +26,8 @@ public class SecurityConfiguration {
     http.headers((headers) -> {
       headers.frameOptions((frameOptions) -> frameOptions.disable());
     });
-    http.csrf((csrf) -> csrf.disable())
+    http.cors(Customizer.withDefaults())
+            .csrf((csrf) -> csrf.disable())
             .authorizeHttpRequests((authorize) -> {
               authorize.requestMatchers("/api/v1/auth/**").permitAll()
                       .anyRequest().authenticated();

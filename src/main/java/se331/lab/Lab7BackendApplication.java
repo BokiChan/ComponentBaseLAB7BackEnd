@@ -17,11 +17,11 @@ public class Lab7BackendApplication {
     public WebMvcConfigurer corsConfigurer(){
         return new WebMvcConfigurer() {
             @Override
-            public void addCorsMappings(CorsRegistry registry){
+            public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173")
-                        .exposedHeaders("x-total-count");
-
+                        .exposedHeaders("x-total-count")
+                        .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
+                        .allowedOrigins("http://localhost:5173");
             }
         };
     }
