@@ -85,6 +85,12 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         event4.setOrganizer(org3);
         org3.getOwnEvents().add(event4);
         addUser();
+        org1.setUser(user1);
+        user1.setOrganizer(org1);
+        org2.setUser(user2);
+        user2.setOrganizer(org2);
+        org3.setUser(user3);
+        user3.setOrganizer(org3);
 
         participantRepository.save(Participant.builder()
                 .name("Alice Somchai")
