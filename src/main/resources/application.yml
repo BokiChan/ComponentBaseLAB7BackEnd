@@ -1,12 +1,14 @@
+application:
+  name: 331-backend
+  security:
+    jwt:
+      secret-key: 9fda8e8c5f9088245b1cf13c981d9f395215fbb187cf16f6171f9820568f133183e4cd05da65cbd04c7ffdb88324a1cd724be7a806472d1c43ff448d735ae519
+      expiration: 86400000          # 1 day in ms
+      refresh-token:
+        expiration: 604800000
 spring:
   application:
     name: 331-backend
-    security:
-      jwt:
-        secret-key: 9fda8e8c5f9088245b1cf13c981d9f395215fbb187cf16f6171f9820568f133183e4cd05da65cbd04c7ffdb88324a1cd724be7a806472d1c43ff448d735ae519
-        expiration: 86400000          # 1 day in ms
-        refresh-token:
-          expiration: 604800000
   mvc:
     problemdetails:
       enabled: true
