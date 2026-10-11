@@ -25,8 +25,11 @@ public class SecurityConfiguration {
     http.headers((headers) -> {
       headers.frameOptions((frameOptions) -> frameOptions.disable());
     });
-    http
-            .csrf((crsf) -> crsf.disable())
+    http.csrf((csrf) -> csrf.disable())
+            .authorizeHttpRequests((authorize) -> {
+              authorize.requestMatchers("/api/v1/auth/**").permitAll()
+                      .anyRequest().authenticated();
+            })
 
 
             .sessionManagement((session) ->{
